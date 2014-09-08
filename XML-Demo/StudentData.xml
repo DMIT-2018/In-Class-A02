@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Students>
+  <Student>
+    <Studentnumber>10009001</Studentnumber>
+    <FirstName>Brock</FirstName>
+    <LastName>Todd</LastName>
+    <DisplayName>Brock</DisplayName>
+    <Gender>M</Gender>
+    <Address>8755 Strathearn Cr.</Address>
+    <City>Edmonton</City>
+    <ProvinceState>AB</ProvinceState>
+    <Country>CA</Country>
+    <PostalCodeZip>T6C4C5</PostalCodeZip>
+    <BirthDate></BirthDate>
+  </Student>
+  <Student>
+    <Studentnumber>10009004</Studentnumber>
+    <FirstName>Annette</FirstName>
+    <LastName>Oldham</LastName>
+    <DisplayName>Annette</DisplayName>
+    <Gender>F</Gender>
+    <Address>Box 10</Address>
+    <City>The Pas</City>
+    <ProvinceState>MB</ProvinceState>
+    <CountryCode>CA</CountryCode>
+    <PostalCodeZip>R9A1K2</PostalCodeZip>
+    <BirthDate>1968-10-09T00:00:00</BirthDate>
+  </Student>
+  <Student>
+    <Studentnumber>10009010</Studentnumber>
+    <FirstName>Tonio</FirstName>
+    <LastName>Atenciolucas</LastName>
+    <DisplayName>Tonio</DisplayName>
+    <Gender>M</Gender>
+    <Address>14 Via Pleiadi</Address>
+    <City>Rimini</City>
+    <CountryCode>IT</CountryCode>
+    <BirthDate>1969-03-05T00:00:00</BirthDate>
+  </Student>
+</Students>
