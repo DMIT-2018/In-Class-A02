@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<siteMap xmlns="http://schemas.microsoft.com/AspNet/SiteMap-File-1.0" >
+  <siteMapNode title="eRestaurant"  description="eRestaurant">
+    <siteMapNode url="~/Default.aspx" title="Home"  description="eRestaurant - Simple-Tasty-Elegant" />
+    <siteMapNode url="~/Reservations.aspx" title="Reservations"  description="Reservations" />
+    <siteMapNode title="Staff"  description="Front Desk, Waiters, and Kitchen Staff" >
+      <siteMapNode url="~/Staff/KitchenOrders.aspx" title="Kitchen Orders" description="Kitchen Ordering Queue" />
+      <siteMapNode url="~/Staff/FrontDesk.aspx" title="Front Desk" description="Seating and Reservations" />
+      <siteMapNode url="~/Staff/ServingTables.aspx" title="Tables and Waiters" description="Table Serving" />
+    </siteMapNode>
+    <siteMapNode title="About Us"  description="History, Contact Info, and Maps" >
+      <siteMapNode url="~/Contact.aspx" title="Contact" description="Location and Contact Information" />
+      <siteMapNode url="~/About.aspx" title="History" description="eRestaurant - Our History" />
+    </siteMapNode>
+    <siteMapNode title="Admin"  description="Managerial Services">
+      <siteMapNode url="~/Admin/SpecialEvents.aspx" title="Special Events"  description="Manage the Special Events for Reservations" />
+      <siteMapNode url="~/Admin/ManageTables.aspx" title="Tables"  description="Manage the Restaurant Seating/Tables" />
+      <siteMapNode url="~/Admin/ManageMenuItems.aspx" title="Items"  description="Manage the Menu" />
+      <siteMapNode url="~/Admin/ManageWaiters.aspx" title="Waiters"  description="Staff Management" />
+    </siteMapNode>
+  </siteMapNode>
+</siteMap>
