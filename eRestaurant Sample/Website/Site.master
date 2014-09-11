@@ -11,7 +11,7 @@
     <asp:PlaceHolder runat="server">
         <%: Scripts.Render("~/bundles/modernizr") %>
     </asp:PlaceHolder>
-    <webopt:bundlereference runat="server" path="~/Content/css" />
+    <webopt:BundleReference runat="server" Path="~/Content/css" />
     <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
 
 </head>
@@ -49,11 +49,26 @@
                     <a class="navbar-brand" runat="server" href="~/">Application name</a>
                 </div>
                 <div class="navbar-collapse collapse">
-                    <ul class="nav navbar-nav">
+                    <%--<ul class="nav navbar-nav">
                         <li><a runat="server" href="~/">Home</a></li>
                         <li><a runat="server" href="~/About">About</a></li>
                         <li><a runat="server" href="~/Contact">Contact</a></li>
-                    </ul>
+                    </ul>--%>
+                    <asp:Menu ID="SiteNav" runat="server" DataSourceID="SiteNavDataSource"
+                        CssClass="" Orientation="Horizontal" StaticDisplayLevels="1" IncludeStyleBlock="false"
+                        StaticMenuStyle-CssClass="nav navbar-nav" StaticSelectedStyle-CssClass="active"
+                        DynamicMenuStyle-CssClass="dropdown-menu" EnableViewState="false" EnableTheming="false">
+                    </asp:Menu>
+                    <script>
+                        /* Remove float styling that was injected for the menu control */
+
+                        $(function () {
+                            // Isolate the context for applying Bootstrap styling
+                            $('#SiteNav').next().removeAttr('style');
+                        });
+                    </script>
+                    <asp:SiteMapDataSource ID="SiteNavDataSource" runat="server"
+                        ShowStartingNode="false" />
                     <asp:LoginView runat="server" ViewStateMode="Disabled">
                         <AnonymousTemplate>
                             <ul class="nav navbar-nav navbar-right">
