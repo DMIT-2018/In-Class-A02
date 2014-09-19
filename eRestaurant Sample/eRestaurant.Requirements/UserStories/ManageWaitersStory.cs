@@ -20,7 +20,13 @@ namespace eRestaurant.Requirements.UserStories
         [AutoRollback]
         public void AddWaiterScenario()
         {
-            Waiter newGuy = new Waiter();
+            Waiter newGuy = new Waiter() 
+            {
+                FirstName = "Fred",
+                LastName = "Flintstone",
+                Address = "123 Bedrock",
+                Phone = "780.555.1212"
+            };
             int waiterId = -1;
             this.Given(_ => GivenWaiterInformation(newGuy))
                 .When(_ => WhenIAddTheWaiter(newGuy, out waiterId))
