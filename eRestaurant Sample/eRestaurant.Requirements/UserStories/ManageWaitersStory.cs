@@ -25,7 +25,8 @@ namespace eRestaurant.Requirements.UserStories
                 FirstName = "Fred",
                 LastName = "Flintstone",
                 Address = "123 Bedrock",
-                Phone = "780.555.1212"
+                Phone = "780.555.1212",
+                HireDate = DateTime.Today.AddDays(-3)
             };
             int waiterId = -1;
             this.Given(_ => GivenWaiterInformation(newGuy))
