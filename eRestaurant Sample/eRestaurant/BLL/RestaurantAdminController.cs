@@ -141,8 +141,60 @@ namespace eRestaurant.BLL
 
         #region Manage Special Events
         #region Command
+        [DataObjectMethod(DataObjectMethodType.Insert, false)]
+        public void AddSpecialEvent(SpecialEvent item)
+        {
+            using (RestaurantContext context = new RestaurantContext())
+            {
+                // TODO: Validation rules...
+                var added = context.SpecialEvents.Add(item);
+                context.SaveChanges();
+            }
+        }
+
+        [DataObjectMethod(DataObjectMethodType.Update, false)]
+        public void UpdateSpecialEvent(SpecialEvent item)
+        {
+            using (RestaurantContext context = new RestaurantContext())
+            {
+                // TODO: Validation...
+                var attached = context.SpecialEvents.Attach(item);
+                var existing = context.Entry<SpecialEvent>(attached);
+                existing.State = System.Data.Entity.EntityState.Modified;
+                context.SaveChanges();
+            }
+        }
+
+        [DataObjectMethod(DataObjectMethodType.Delete, false)]
+        public void DeleteSpecialEvent(SpecialEvent item)
+        {
+            using (RestaurantContext context = new RestaurantContext())
+            {
+                var existing = context.SpecialEvents.Find(item.EventCode);
+                context.SpecialEvents.Remove(existing);
+                context.SaveChanges();
+            }
+        }
         #endregion
+
         #region Query
+        [DataObjectMethod(DataObjectMethodType.Select, false)]
+        public List<SpecialEvent> ListAllSpecialEvents()
+        {
+            using (RestaurantContext context = new RestaurantContext())
+            {
+                return context.SpecialEvents.ToList();
+            }
+        }
+
+        [DataObjectMethod(DataObjectMethodType.Select, false)]
+        public SpecialEvent GetSpecialEvent(int SpecialEventId)
+        {
+            using (RestaurantContext context = new RestaurantContext())
+            {
+                return context.SpecialEvents.Find(SpecialEventId);
+            }
+        }
         #endregion
         #endregion
 
