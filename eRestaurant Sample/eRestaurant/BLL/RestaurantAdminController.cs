@@ -81,8 +81,61 @@ namespace eRestaurant.BLL
 
         #region Manage Items
         #region Command
+        [DataObjectMethod(DataObjectMethodType.Insert, false)]
+        public int AddItem(Item item)
+        {
+            using (RestaurantContext context = new RestaurantContext())
+            {
+                // TODO: Validation rules...
+                var added = context.Items.Add(item);
+                context.SaveChanges();
+                return added.ItemID;
+            }
+        }
+
+        [DataObjectMethod(DataObjectMethodType.Update, false)]
+        public void UpdateItem(Item item)
+        {
+            using (RestaurantContext context = new RestaurantContext())
+            {
+                // TODO: Validation...
+                var attached = context.Items.Attach(item);
+                var existing = context.Entry<Item>(attached);
+                existing.State = System.Data.Entity.EntityState.Modified;
+                context.SaveChanges();
+            }
+        }
+
+        [DataObjectMethod(DataObjectMethodType.Delete, false)]
+        public void DeleteItem(Item item)
+        {
+            using (RestaurantContext context = new RestaurantContext())
+            {
+                var existing = context.Items.Find(item.ItemID);
+                context.Items.Remove(existing);
+                context.SaveChanges();
+            }
+        }
         #endregion
+
         #region Query
+        [DataObjectMethod(DataObjectMethodType.Select, false)]
+        public List<Item> ListAllItems()
+        {
+            using (RestaurantContext context = new RestaurantContext())
+            {
+                return context.Items.ToList();
+            }
+        }
+
+        [DataObjectMethod(DataObjectMethodType.Select, false)]
+        public Item GetItem(int ItemId)
+        {
+            using (RestaurantContext context = new RestaurantContext())
+            {
+                return context.Items.Find(ItemId);
+            }
+        }
         #endregion
         #endregion
 
