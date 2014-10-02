@@ -6,16 +6,17 @@
     </div>
     <asp:ListView ID="ListView1" runat="server" DataSourceID="SpecialEventDataSource" InsertItemPosition="LastItem">
         <EditItemTemplate>
-            <span style="">EventCode:
-                <asp:TextBox Text='<%# Bind("EventCode") %>' runat="server" ID="EventCodeTextBox" /><br />
+            <div style="">
+                <asp:LinkButton runat="server" CommandName="Update" Text="Update" ID="UpdateButton" />
+                &nbsp;&nbsp;
+                <asp:LinkButton runat="server" CommandName="Cancel" Text="Cancel" ID="CancelButton" />
+                &nbsp;&nbsp;&nbsp;
+                EventCode:
+                <asp:TextBox Text='<%# Bind("EventCode") %>' runat="server" ID="EventCodeTextBox" />
                 Description:
-                <asp:TextBox Text='<%# Bind("Description") %>' runat="server" ID="DescriptionTextBox" /><br />
-                <asp:CheckBox Checked='<%# Bind("Active") %>' runat="server" ID="ActiveCheckBox" Text="Active" /><br />
-                Reservations:
-                <asp:TextBox Text='<%# Bind("Reservations") %>' runat="server" ID="ReservationsTextBox" /><br />
-                <asp:Button runat="server" CommandName="Update" Text="Update" ID="UpdateButton" /><asp:Button runat="server" CommandName="Cancel" Text="Cancel" ID="CancelButton" /><br />
-                <br />
-            </span>
+                <asp:TextBox Text='<%# Bind("Description") %>' runat="server" ID="DescriptionTextBox" />
+                <asp:CheckBox Checked='<%# Bind("Active") %>' runat="server" ID="ActiveCheckBox" Text="Active" />
+            </div>
         </EditItemTemplate>
         <EmptyDataTemplate>
             <span>No data was returned.</span>
