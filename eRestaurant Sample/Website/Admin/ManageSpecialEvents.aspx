@@ -4,7 +4,7 @@
     <div class="row col-md-12">
         <h1>Manage Special Events <span class="glyphicon glyphicon-glass"></span></h1>
     </div>
-    <asp:ListView ID="ListView1" runat="server" DataSourceID="SpecialEventDataSource" InsertItemPosition="LastItem">
+    <asp:ListView ID="ListView1" runat="server" DataSourceID="SpecialEventDataSource" InsertItemPosition="LastItem" DataKeyNames="EventCode">
         <EditItemTemplate>
             <div style="">
                 <asp:LinkButton runat="server" CommandName="Update" Text="Update" ID="UpdateButton" />
