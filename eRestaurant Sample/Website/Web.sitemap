@@ -2,6 +2,9 @@
 <siteMap xmlns="http://schemas.microsoft.com/AspNet/SiteMap-File-1.0" >
   <siteMapNode title="eRestaurant"  description="eRestaurant">
     <siteMapNode url="~/Default.aspx" title="Home"  description="eRestaurant - Simple-Tasty-Elegant" />
+    
+    <siteMapNode url="~/MenuItems.aspx" title="Our Menu" description="eRestaunt Menu Items" />
+    
     <siteMapNode url="~/Reservations.aspx" title="Reservations"  description="Reservations" />
     <siteMapNode title="Staff"  description="Front Desk, Waiters, and Kitchen Staff" >
       <siteMapNode url="~/Staff/KitchenOrders.aspx" title="Kitchen Orders" description="Kitchen Ordering Queue" />
@@ -13,7 +16,7 @@
       <siteMapNode url="~/About.aspx" title="History" description="eRestaurant - Our History" />
     </siteMapNode>
     <siteMapNode title="Admin"  description="Managerial Services">
-      <siteMapNode url="~/Admin/SpecialEvents.aspx" title="Special Events"  description="Manage the Special Events for Reservations" />
+      <siteMapNode url="~/Admin/ManageSpecialEvents.aspx" title="Special Events"  description="Manage the Special Events for Reservations" />
       <siteMapNode url="~/Admin/ManageTables.aspx" title="Tables"  description="Manage the Restaurant Seating/Tables" />
       <siteMapNode url="~/Admin/ManageMenuItems.aspx" title="Items"  description="Manage the Menu" />
       <siteMapNode url="~/Admin/ManageWaiters.aspx" title="Waiters"  description="Staff Management" />
