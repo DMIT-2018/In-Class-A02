@@ -7,13 +7,25 @@
         <asp:Repeater ID="MenuItemRepeater" runat="server" DataSourceID="MenuItemDataSource">
             <ItemTemplate>
                 <div>
-                    <%# ((decimal)Eval("CurrentPrice")).ToString("C") %>
-                    &mdash;
-                    <%# Eval("Description") %>
-                    &ndash;
-                    <%# Eval("Category.Description") %>
-                    &ndash;
-                    <%# Eval("Calories") %> Calories
+                    <h3>
+                        <img src='<%# "Images/" + Eval("Description") + "-1.png" %>' />
+                        <%# Eval("Description") %>
+                    </h3>
+                    <div class="well">
+                        <asp:Repeater ID="InnerRepeater" runat="server"
+                             DataSource='<%# Eval("MenuItems") %>'>
+                            <ItemTemplate>
+                                <div>
+                                    <h4>
+                                        <%# Eval("Description") %>
+                                        <%# Eval("Calories") %>
+                                        <%# ((decimal)Eval("Price")).ToString("C") %>
+                                    </h4>
+                                    <%# Eval("Comment") %>
+                                </div>
+                            </ItemTemplate>
+                        </asp:Repeater>
+                    </div>
                 </div>
             </ItemTemplate>
             <SeparatorTemplate>
@@ -22,7 +34,7 @@
         </asp:Repeater>
 
 
-        <asp:ObjectDataSource runat="server" ID="MenuItemDataSource" OldValuesParameterFormatString="original_{0}" SelectMethod="ListMenuItems" TypeName="eRestaurant.BLL.MenuController"></asp:ObjectDataSource>
+        <asp:ObjectDataSource runat="server" ID="MenuItemDataSource" OldValuesParameterFormatString="original_{0}" SelectMethod="ListCategorizedMenuItems" TypeName="eRestaurant.BLL.MenuController"></asp:ObjectDataSource>
     </div>
 </asp:Content>
 

@@ -51,6 +51,8 @@
     <Compile Include="DAL\RestaurantContext.cs" />
     <Compile Include="Entities\Bill.cs" />
     <Compile Include="Entities\BillItem.cs" />
+    <Compile Include="Entities\DTOs\Category.cs" />
+    <Compile Include="Entities\DTOs\MenuItem.cs" />
     <Compile Include="Entities\Item.cs" />
     <Compile Include="Entities\MenuCategory.cs" />
     <Compile Include="Entities\Reservation.cs" />
