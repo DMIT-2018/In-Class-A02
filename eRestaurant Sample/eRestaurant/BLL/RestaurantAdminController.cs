@@ -251,6 +251,18 @@ namespace eRestaurant.BLL
         #endregion
         #endregion
 
-
+        #region Ad-Hoc
+        [DataObjectMethod(DataObjectMethodType.Select, false)]
+        public List<Reservation> ReservationsBySpecialEvent(string specialEventId)
+        {
+            using (var context = new RestaurantContext())
+            {
+                var data = from item in context.Reservations
+                           where item.EventCode == specialEventId
+                           select item;
+                return data.ToList();
+            }
+        }
+        #endregion
     }
 }
