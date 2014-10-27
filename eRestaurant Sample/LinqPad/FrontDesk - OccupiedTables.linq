@@ -56,6 +56,19 @@ var step2 = from data in step1.ToList() // .ToList() forces the first result set
             };
 step2.Dump();
 
+// Step 3 - Get just the first CommonBilling item
+//         (presumes no overlaps can occur - i.e., two groups at the same table at the same time)
+var step3 = from data in step2.ToList()
+            select new
+            {
+                Table = data.Table,
+                Seating = data.Seating,
+                Taken = data.CommonBilling.Count() > 0,
+                // .FirstOrDefault() is effectively "flattening" my collection of 1 item into a 
+                // single object whose properties I can get in step 4 using the dot (.) operator
+                CommonBilling = data.CommonBilling.FirstOrDefault()
+            };
+step3.Dump();
 
 
 
