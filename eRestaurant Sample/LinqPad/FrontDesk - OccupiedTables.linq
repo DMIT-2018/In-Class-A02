@@ -44,6 +44,37 @@ var step1 = from data in Tables
              };
 step1.Dump();
 
+// Step 2 - Union the walk-in bills and the reservation bills while extracting the relevant bill info
+// .ToList() helps resolve the "Types in Union or Concat are constructed incompatibly" error
+var step2 = from data in step1.ToList() // .ToList() forces the first result set to be in memory
+            select new
+            {
+                Table = data.Table,
+                Seating = data.Seating,
+                CommonBilling = from info in data.Bills.Union(data.Reservations)
+                                select info
+            };
+step2.Dump();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
