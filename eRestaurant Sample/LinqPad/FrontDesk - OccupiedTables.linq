@@ -70,7 +70,19 @@ var step3 = from data in step2.ToList()
             };
 step3.Dump();
 
-
+// Step 4 - Build our intended seating summary info
+var step4 = from data in step3
+            select new // SeatingSummary()
+            {
+                Table = data.Table,
+                Seating = data.Seating,
+                Taken = data.Taken,
+                // use a ternary expression to conditionally get the bill id (if it exists)
+                BillID = data.Taken ?               // if(data.Taken)
+                         data.CommonBilling.BillID  // value to use if true
+                       : (int?) null                // value to use if false
+            };
+step4.Dump();
 
 
 
