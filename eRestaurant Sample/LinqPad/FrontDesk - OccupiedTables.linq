@@ -52,7 +52,13 @@ var step2 = from data in step1.ToList() // .ToList() forces the first result set
                 Table = data.Table,
                 Seating = data.Seating,
                 CommonBilling = from info in data.Bills.Union(data.Reservations)
-                                select info
+                                select new // info
+                                {
+                                    BillID = info.BillID,
+                                    BillTotal = info.BillItems.Sum(bi => bi.Quantity * bi.SalePrice),
+                                    Waiter = info.Waiter.FirstName,
+                                    Reservation = info.Reservation
+                                }
             };
 step2.Dump();
 
@@ -82,9 +88,14 @@ var step4 = from data in step3
                          data.CommonBilling.BillID  // value to use if true
                        :                            // else
                          (int?) null,               // value to use if false
+                // Note: going back to step 2 to be more selective of my Billing Information
                 BillTotal = data.Taken ?
                             data.CommonBilling.BillTotal : (decimal?) null,
-                
+                Waiter = data.Taken ? data.CommonBilling.Waiter : (string) null,
+                ReservationName = data.Taken ?
+                                  (data.CommonBilling.Reservation != null ?
+                                   data.CommonBilling.Reservation.CustomerName : (string) null)
+                                : (string) null
             };
 step4.Dump();
 
