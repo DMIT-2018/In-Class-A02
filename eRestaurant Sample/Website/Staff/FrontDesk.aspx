@@ -2,6 +2,12 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" Runat="Server">
     <div class="row col-md-12">
+        <style type="text/css">
+            .seating {
+                display: inline-block;
+                vertical-align: top;
+            }
+        </style>
         <h1>Front Desk</h1>
 
         <div class="well">
@@ -30,6 +36,46 @@
 
             <asp:LinkButton ID="MockDateTime" runat="server" CssClass="btn btn-primary">Post-back new date/time</asp:LinkButton>
             <asp:LinkButton ID="MockLastBillingDateTime" runat="server" CssClass="btn btn-default">Set to last billed date/time</asp:LinkButton>
+        </div>
+
+        <div class="pull-right col-md-5">
+            <details open>
+                <summary>Reservations by Date/Time</summary>
+                <h4>Today's Reservations</h4>
+                <asp:Repeater ID="ReservationsRepeater" runat="server"
+                    ItemType="eRestaurant.Entities.DTOs.ReservationCollection" DataSourceID="ReservationsDataSource">
+                    <ItemTemplate>
+                        <h4>
+                            <%# Item.Time %>
+                            <small><%# Item.Reservations.Count %> reservations at this time-slot</small>
+                        </h4>
+                        
+                        <asp:ListView ID="ReservationSummaryListView" runat="server"
+                             ItemType="eRestaurant.Entities.DTOs.ReservationSummary"
+                             DataSource='<%# Item.Reservations %>'>
+                            <LayoutTemplate>
+                                <div class="seating">
+                                    <span runat="server" id="itemPlaceholder" />
+                                </div>
+                            </LayoutTemplate>
+                            <ItemTemplate>
+                                <div>
+                                    <%# Item.Name %> &mdash;
+                                    <%# Item.NumberInParty %> &mdash;
+                                    <%# Item.Status %> &mdash;
+                                    PH:
+                                    <%# Item.Contact %>
+                                </div>
+                            </ItemTemplate>
+                        </asp:ListView>
+                    </ItemTemplate>
+                </asp:Repeater>
+                <asp:ObjectDataSource runat="server" ID="ReservationsDataSource" OldValuesParameterFormatString="original_{0}" SelectMethod="ReservationsByTime" TypeName="eRestaurant.BLL.SeatingController">
+                    <SelectParameters>
+                        <asp:ControlParameter ControlID="SearchDate" PropertyName="Text" Name="date" Type="DateTime"></asp:ControlParameter>
+                    </SelectParameters>
+                </asp:ObjectDataSource>
+            </details>
         </div>
     </div>
 </asp:Content>

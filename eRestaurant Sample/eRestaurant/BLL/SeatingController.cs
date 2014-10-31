@@ -36,10 +36,10 @@ namespace eRestaurant.BLL
                                  //         select seat.Table.TableNumber
                              };
                 var finalResult = from item in result
-                                  group item by item.Date.TimeOfDay into itemGroup
+                                  group item by item.Date.Hour into itemGroup
                                   select new ReservationCollection()
                                   {
-                                      Time = itemGroup.Key,
+                                      Hour = itemGroup.Key,
                                       Reservations = itemGroup.ToList()
                                   };
                 return finalResult.ToList();

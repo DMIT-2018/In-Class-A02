@@ -8,7 +8,8 @@ namespace eRestaurant.Entities.DTOs
 {
     public class ReservationCollection
     {
-        public TimeSpan Time { get; set; }
+        public int Hour { get; set; }
+        public TimeSpan Time { get { return new TimeSpan(Hour, 0, 0); } }
         public List<ReservationSummary> Reservations { get; set; }
     }
 }
