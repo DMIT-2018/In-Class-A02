@@ -80,22 +80,13 @@ var step4 = from data in step3
                 // use a ternary expression to conditionally get the bill id (if it exists)
                 BillID = data.Taken ?               // if(data.Taken)
                          data.CommonBilling.BillID  // value to use if true
-                       : (int?) null                // value to use if false
+                       :                            // else
+                         (int?) null,               // value to use if false
+                BillTotal = data.Taken ?
+                            data.CommonBilling.BillTotal : (decimal?) null,
+                
             };
 step4.Dump();
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
