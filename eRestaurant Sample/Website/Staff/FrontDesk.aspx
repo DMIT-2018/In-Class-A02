@@ -35,7 +35,7 @@
             <link itemprop="url" href="../Content/standalone.css" rel="stylesheet" />
 
             <asp:LinkButton ID="MockDateTime" runat="server" CssClass="btn btn-primary">Post-back new date/time</asp:LinkButton>
-            <asp:LinkButton ID="MockLastBillingDateTime" runat="server" CssClass="btn btn-default">Set to last billed date/time</asp:LinkButton>
+            <asp:LinkButton ID="MockLastBillingDateTime" runat="server" CssClass="btn btn-default" OnClick="MockLastBillingDateTime_Click">Set to last billed date/time</asp:LinkButton>
         </div>
 
         <div class="pull-right col-md-5">
