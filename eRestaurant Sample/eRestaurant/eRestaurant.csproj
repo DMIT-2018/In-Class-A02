@@ -47,6 +47,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BLL\AdHocController.cs" />
+    <Compile Include="BLL\BusinessRuleException.cs" />
     <Compile Include="BLL\MenuController.cs" />
     <Compile Include="BLL\ReportController.cs" />
     <Compile Include="BLL\RestaurantAdminController.cs" />

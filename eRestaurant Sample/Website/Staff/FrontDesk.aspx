@@ -1,5 +1,8 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.master" AutoEventWireup="true" CodeFile="FrontDesk.aspx.cs" Inherits="Staff_FrontDesk" %>
 
+<%@ Register Src="~/UserControls/MessageUserControl.ascx" TagPrefix="uc1" TagName="MessageUserControl" %>
+
+
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" Runat="Server">
     <div class="row col-md-12">
         <style type="text/css">
@@ -40,6 +43,8 @@
             <asp:LinkButton ID="MockDateTime" runat="server" CssClass="btn btn-primary">Post-back new date/time</asp:LinkButton>
             <asp:LinkButton ID="MockLastBillingDateTime" runat="server" CssClass="btn btn-default" OnClick="MockLastBillingDateTime_Click">Set to last billed date/time</asp:LinkButton>
         </div>
+
+        <uc1:MessageUserControl runat="server" ID="MessageUserControl" />
 
         <div class="pull-right col-md-5">
             <details open>
@@ -87,12 +92,20 @@
 
                 <asp:GridView ID="SeatingGridView" runat="server"
                     CssClass="table table-hover table-striped table-condensed"
+                    OnSelectedIndexChanging="SeatingGridView_SelectedIndexChanging"
                     ItemType="eRestaurant.Entities.DTOs.SeatingSummary" AutoGenerateColumns="False"
                     DataSourceID="SeatingObjectDataSource">
                     <Columns>
                         <asp:CheckBoxField DataField="Taken" HeaderText="Taken" SortExpression="Taken"
                              ItemStyle-HorizontalAlign="Center"></asp:CheckBoxField>
-                        <asp:BoundField DataField="Table" HeaderText="Table" SortExpression="Table"></asp:BoundField>
+
+                        <%--<asp:BoundField DataField="Table" HeaderText="Table" SortExpression="Table"></asp:BoundField>--%>
+                        <asp:TemplateField>
+                            <ItemTemplate>
+                                <asp:Label ID="TableNumber" runat="server" Text="<%# Item.Table %>" />
+                            </ItemTemplate>
+                        </asp:TemplateField>
+
                         <asp:BoundField DataField="Seating" HeaderText="Seating" SortExpression="Seating"></asp:BoundField>
                         <asp:TemplateField>
                             <ItemTemplate>
@@ -105,10 +118,11 @@
                                          placeholder="# people"></asp:TextBox>
                                     <span class="input-group-addon">
                                         <asp:DropDownList ID="WaiterList" runat="server"
-                                             CssClass="selectpicker"
-                                             AppendDataBoundItems="true">
+                                            CssClass="selectpicker"
+                                            AppendDataBoundItems="true" DataSourceID="WaiterDataSource" DataTextField="FullName" DataValueField="WaiterID">
                                             <asp:ListItem Value="0">[select a waiter]</asp:ListItem>
                                         </asp:DropDownList>
+                                        <asp:ObjectDataSource runat="server" ID="WaiterDataSource" OldValuesParameterFormatString="original_{0}" SelectMethod="ListAllWaiters" TypeName="eRestaurant.BLL.RestaurantAdminController"></asp:ObjectDataSource>
                                     </span>
                                     <span class="input-group-addon"
                                           style="width:5px;padding:0;border:0;background-color:white;"></span>
