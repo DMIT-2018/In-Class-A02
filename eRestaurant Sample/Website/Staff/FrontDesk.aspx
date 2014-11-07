@@ -57,7 +57,9 @@
                         DataTextField="FullName" DataValueField="WaiterId">
                         <asp:ListItem Value="0">[select a waiter]</asp:ListItem>
                     </asp:DropDownList>
-                    <asp:ListBox ID="ReservationTableListBox" runat="server" CssClass="seating" DataSourceID="AvailableSeatingObjectDataSource" SelectionMode="Multiple" Rows="14"></asp:ListBox>
+                    <asp:ListBox ID="ReservationTableListBox" runat="server" CssClass="seating"
+                        DataSourceID="AvailableSeatingObjectDataSource" SelectionMode="Multiple" Rows="14"
+                        DataTextField="Table" DataValueField="Table"></asp:ListBox>
                 </asp:Panel>
                 <asp:Repeater ID="ReservationsRepeater" runat="server"
                     ItemType="eRestaurant.Entities.DTOs.ReservationCollection" DataSourceID="ReservationsDataSource">
