@@ -397,7 +397,7 @@
         </member>
         <member name="M:Microsoft.AspNet.Identity.EntityFramework.UserStore`6.SetTwoFactorEnabledAsync(`0,System.Boolean)">
             <summary>
-                Set the Two Factor provider for the user
+                Set whether two factor authentication is enabled for the user
             </summary>
             <param name="user"></param>
             <param name="enabled"></param>
@@ -405,9 +405,16 @@
         </member>
         <member name="M:Microsoft.AspNet.Identity.EntityFramework.UserStore`6.GetTwoFactorEnabledAsync(`0)">
             <summary>
-                Get the two factor provider for the user
+                Gets whether two factor authentication is enabled for the user
             </summary>
             <param name="user"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.AspNet.Identity.EntityFramework.UserStore`6.GetUserAggregateAsync(System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}})">
+            <summary>
+            Used to attach child entities to the User aggregate, i.e. Roles, Logins, and Claims
+            </summary>
+            <param name="filter"></param>
             <returns></returns>
         </member>
         <member name="M:Microsoft.AspNet.Identity.EntityFramework.UserStore`6.Dispose(System.Boolean)">
@@ -423,7 +430,7 @@
         </member>
         <member name="P:Microsoft.AspNet.Identity.EntityFramework.UserStore`6.DisposeContext">
             <summary>
-                If true will call dispose on the DbContext during Dipose
+                If true will call dispose on the DbContext during Dispose
             </summary>
         </member>
         <member name="P:Microsoft.AspNet.Identity.EntityFramework.UserStore`6.AutoSaveChanges">

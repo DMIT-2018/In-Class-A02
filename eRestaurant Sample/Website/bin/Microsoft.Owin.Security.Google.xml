@@ -11,7 +11,7 @@
         </member>
         <member name="M:Owin.GoogleAuthenticationExtensions.UseGoogleAuthentication(Owin.IAppBuilder,Microsoft.Owin.Security.Google.GoogleAuthenticationOptions)">
             <summary>
-            Authenticate users using Google
+            Authenticate users using Google OpenId
             </summary>
             <param name="app">The <see cref="T:Owin.IAppBuilder"/> passed to the configuration method</param>
             <param name="options">Middleware configuration options</param>
@@ -19,7 +19,7 @@
         </member>
         <member name="M:Owin.GoogleAuthenticationExtensions.UseGoogleAuthentication(Owin.IAppBuilder)">
             <summary>
-            Authenticate users using Google
+            Authenticate users using Google OpenId
             </summary>
             <param name="app">The <see cref="T:Owin.IAppBuilder"/> passed to the configuration method</param>
             <returns>The updated <see cref="T:Owin.IAppBuilder"/></returns>
@@ -220,6 +220,11 @@
             A list of permissions to request.
             </summary>
         </member>
+        <member name="P:Microsoft.Owin.Security.Google.GoogleOAuth2AuthenticationOptions.AccessType">
+            <summary>
+            access_type. Set to 'offline' to request a refresh token.
+            </summary>
+        </member>
         <member name="M:Microsoft.Owin.Security.Google.Infrastructure.Message.Add(Microsoft.Owin.IReadableStringCollection,System.Boolean)">
             <summary>
             Adds the openid parameters from querystring or form body into Namespaces and Properties collections.
@@ -302,7 +307,7 @@
         </member>
         <member name="M:Microsoft.Owin.Security.Google.GoogleAuthenticationProvider.Authenticated(Microsoft.Owin.Security.Google.GoogleAuthenticatedContext)">
             <summary>
-            Invoked whenever Google succesfully authenticates a user
+            Invoked whenever Google successfully authenticates a user
             </summary>
             <param name="context">Contains information about the login session as well as the user <see cref="T:System.Security.Claims.ClaimsIdentity"/>.</param>
             <returns>A <see cref="T:System.Threading.Tasks.Task"/> representing the completed operation.</returns>
@@ -346,7 +351,7 @@
             </summary>
             <param name="context">The OWIN request context</param>
             <param name="options">The Google OpenID middleware options</param>
-            <param name="properties">The authenticaiton properties of the challenge</param>
+            <param name="properties">The authentication properties of the challenge</param>
             <param name="redirectUri">The initial redirect URI</param>
         </member>
         <member name="P:Microsoft.Owin.Security.Google.GoogleApplyRedirectContext.RedirectUri">
@@ -356,7 +361,7 @@
         </member>
         <member name="P:Microsoft.Owin.Security.Google.GoogleApplyRedirectContext.Properties">
             <summary>
-            Gets the authenticaiton properties of the challenge
+            Gets the authentication properties of the challenge
             </summary>
         </member>
         <member name="T:Microsoft.Owin.Security.Google.GoogleOAuth2ApplyRedirectContext">

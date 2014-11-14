@@ -123,6 +123,12 @@
             A list of permissions to request.
             </summary>
         </member>
+        <member name="P:Microsoft.Owin.Security.Facebook.FacebookAuthenticationOptions.SendAppSecretProof">
+            <summary>
+            Gets or sets if the appsecret_proof should be generated and sent with Facebook API calls.
+            This is enabled by default.
+            </summary>
+        </member>
         <member name="T:Microsoft.Owin.Security.Facebook.FacebookApplyRedirectContext">
             <summary>
             Context passed when a Challenge causes a redirect to authorize endpoint in the Facebook middleware
@@ -144,7 +150,7 @@
         </member>
         <member name="P:Microsoft.Owin.Security.Facebook.FacebookApplyRedirectContext.Properties">
             <summary>
-            Gets the authenticaiton properties of the challenge
+            Gets the authentication properties of the challenge
             </summary>
         </member>
         <member name="T:Microsoft.Owin.Security.Facebook.FacebookAuthenticatedContext">
