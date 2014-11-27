@@ -62,11 +62,13 @@
     <Compile Include="BLL\SeatingController.cs" />
     <Compile Include="BLL\Security\RoleManager.cs" />
     <Compile Include="BLL\Security\UserManager.cs" />
+    <Compile Include="BLL\WaiterController.cs" />
     <Compile Include="DAL\RestaurantContext.cs" />
     <Compile Include="DAL\Security\ApplicationDbContext.cs" />
     <Compile Include="Entities\Bill.cs" />
     <Compile Include="Entities\BillItem.cs" />
     <Compile Include="Entities\DTOs\Category.cs" />
+    <Compile Include="Entities\DTOs\ListDataItem.cs" />
     <Compile Include="Entities\DTOs\MenuItem.cs" />
     <Compile Include="Entities\DTOs\Order.cs" />
     <Compile Include="Entities\DTOs\OrderItem.cs" />
