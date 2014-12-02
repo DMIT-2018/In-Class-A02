@@ -9,7 +9,8 @@
 
 // Update the database to make the last few paid bills to be un-paid...
 var result = from data in  Bills
-where data.BillDate >= new DateTime(2014, 10, 24, 21, 30, 0)// Bills.Max(x=>x.BillDate)
+//where data.BillDate >= new DateTime(2014, 10, 24, 21, 30, 0)
+where data.BillDate >= Bills.Max(x=>x.BillDate).AddMinutes(-30)
 && data.TableID != null
 select data;
 foreach(var info in result)
