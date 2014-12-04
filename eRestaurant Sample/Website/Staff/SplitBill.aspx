@@ -34,6 +34,7 @@
                     </asp:TemplateField>
                 </Columns>
             </asp:GridView>
+            Total: <asp:Label ID="OriginalTotal" runat="server" />
         </div>
 
         <div class="col-md-6">
@@ -56,6 +57,7 @@
                     </asp:TemplateField>
                 </Columns>
             </asp:GridView>
+            Total: <asp:Label ID="NewTotal" runat="server" />
         </div>
     </div>
 

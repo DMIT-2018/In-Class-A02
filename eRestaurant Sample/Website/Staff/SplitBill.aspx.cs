@@ -27,6 +27,7 @@ public partial class Staff_SplitBill : System.Web.UI.Page
         // Set the original bill items
         OriginalBillItems.DataSource = data.Items;
         OriginalBillItems.DataBind();
+        UpdateTotalBill(OriginalBillItems, OriginalTotal);
 
         // empty out other bill
         NewBillItems.DataSource = null;
@@ -38,10 +39,19 @@ public partial class Staff_SplitBill : System.Web.UI.Page
 
         GridView sendingGridView = sender as GridView;
         GridView receivingGridView;
+        Label sendingTotalLabel, receivingTotalLabel;
         if (sendingGridView == OriginalBillItems)
+        {
             receivingGridView = NewBillItems;
+            receivingTotalLabel = NewTotal;
+            sendingTotalLabel = OriginalTotal;
+        }
         else
+        {
             receivingGridView = OriginalBillItems;
+            receivingTotalLabel = OriginalTotal;
+            sendingTotalLabel = NewTotal;
+        }
 
 
         GridViewRow row = sendingGridView.Rows[e.NewSelectedIndex];
@@ -54,20 +64,33 @@ public partial class Staff_SplitBill : System.Web.UI.Page
         newItems.Add(item);
         receivingGridView.DataSource = newItems;
         receivingGridView.DataBind();
-        
+
         // 3) take it out of this list
         List<OrderItem> myItems = GetRowsFrom(sendingGridView);
         myItems.RemoveAt(e.NewSelectedIndex);
         sendingGridView.DataSource = myItems;
         sendingGridView.DataBind();
 
-        // 4) happy dance
+        // 4) update the totals
+        UpdateTotalBill(sendingGridView, sendingTotalLabel);
+        UpdateTotalBill(receivingGridView, receivingTotalLabel);
+
+        // 5) happy dance
+    }
+
+    private void UpdateTotalBill(GridView aGridView, Label aLabel)
+    {
+        var data = GetRowsFrom(aGridView);
+        decimal total = 0.00m;
+        foreach (var item in data)
+            total += item.Price * item.Quantity;
+        aLabel.Text = string.Format("{0:C}", total);
     }
 
     private List<OrderItem> GetRowsFrom(GridView theGridView)
     {
         List<OrderItem> result = new List<OrderItem>();
-        foreach(GridViewRow row in theGridView.Rows)
+        foreach (GridViewRow row in theGridView.Rows)
         {
             var data = GetOrderItem(row);
             result.Add(data);
