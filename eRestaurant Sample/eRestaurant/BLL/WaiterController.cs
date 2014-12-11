@@ -51,7 +51,7 @@ namespace eRestaurant.BLL
             }
         }
 
-        public void SplitBill(int billId, List<OrderItem> originalItems, List<OrderItem> newItems)
+        public void SplitBill(int billId, List<OrderItem> updatesToOriginalBillItems, List<OrderItem> newBillItems)
         {
             // TODO: Actually go through and split that bill into two
             using (var context = new RestaurantContext())
@@ -63,10 +63,10 @@ namespace eRestaurant.BLL
 
                 // 2) Loop through bill items, if item not in original, remove
                 List<BillItem> toMove = new List<BillItem>();
-                foreach(var item in bill.Items)
+                foreach(var item in bill.Items) // the items already in the DB
                 {
-                    bool inOriginal = originalItems.Any(x => x.ItemName == item.Item.Description);
-                    bool inNewItems = newItems.Any(x => x.ItemName == item.Item.Description);
+                    bool inOriginal = updatesToOriginalBillItems.Any(x => x.ItemName == item.Item.Description);
+                    bool inNewItems = newBillItems.Any(x => x.ItemName == item.Item.Description);
                     if(!inOriginal)
                     {
                         // TODO: clean
