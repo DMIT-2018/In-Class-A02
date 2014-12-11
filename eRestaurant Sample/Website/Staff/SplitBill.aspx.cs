@@ -120,7 +120,24 @@ public partial class Staff_SplitBill : System.Web.UI.Page
     private void SplitTheBill()
     {
         var originalItems = GetRowsFrom(OriginalBillItems);
-        var newItems = GetRowsFrom(NewBillItems);
+        //var newItems = GetRowsFrom(NewBillItems);
+        // The long version of the line above....
+        List<OrderItem> newItems = new List<OrderItem>();
+        foreach (GridViewRow row in NewBillItems.Rows)
+        {
+            var qtyLabel = row.FindControl("Quantity") as Label;
+            var nameLabel = row.FindControl("ItemName") as Label;
+            var priceLabel = row.FindControl("Price") as Label;
+            var data = new OrderItem()
+            {
+                Quantity = int.Parse(qtyLabel.Text),
+                ItemName = nameLabel.Text,
+                Price = decimal.Parse(priceLabel.Text)
+            };
+
+            newItems.Add(data);
+        }
+
         int billId = int.Parse(BillToSplit.Value);
 
         WaiterController controller = new WaiterController();
